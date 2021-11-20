@@ -3,7 +3,7 @@
 import random
 
 #variables
-money = 12
+money = 25
 maximumStocks = 50
 ownedStocks = 0
 amountStocks = 0
