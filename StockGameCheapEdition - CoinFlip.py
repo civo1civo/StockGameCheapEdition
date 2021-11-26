@@ -11,6 +11,7 @@ year = 2021
 priceStocks = random.randint(1, 5)
 game = True
 Firewall = 'no'
+answers = ['Heads' , 'Tails']
 info = 'show'
 
 #loop of the game
@@ -32,7 +33,7 @@ while game == True:
                     theft = 0
                 if int(theft) == 1:
                     money = int(money) / 2
-                    print('You have been hacked, half of your money is gone.')
+                    print('\nYou have been hacked, half of your money is gone.')
                 if int(theft) == 2:
                     print('\nThe stocks plummeted, you lost all the money.')
                     sellPrice = 0
@@ -47,7 +48,7 @@ while game == True:
                     money = int(money) + int(profit) - 10
                 print('You now have €' + str(money) + '.' + '\n')
                 if int(money) < 0:
-                    print('You lost all your money.' + '\n Thank you for playing!')
+                    print('You lost all your money.' + '\nThank you for playing!')
                     info = 0
                     game = False
                 else:
@@ -84,10 +85,12 @@ while game == True:
                 else:
                     info = 'show'
             elif x == str('showInfo'):
-                print('\nInfo:'+'\nbuyStocks = By typing this command you can buy stocks.Fill in a number, if you fill in somthing that is not a number, the game will crash.'+
+                print('\nInfo:'+'\nbuyStocks = By typing this command you can buy stocks. Fill in a number, if you fill in somthing that is not a number, the game will crash.'+
       '\nsellStocks = By typing this command, you will go to a new year and sell your stocks at a random price.'
       '\nbuyFirewall = By typing this command, you will have the option to buy a firewall that protects you from getting hacked.'+
       '\ncoinFlip = By typing this command, you have the chance to double or lose all your money. The stocks you bought will not be affected.')
+                
+                
             elif x == str('coinFlip'):
                 print('Do you want to go all in and see if you can double your money? Type yes or no'+'\nNote: You can lose all of it.')
                 x = input()
@@ -95,13 +98,14 @@ while game == True:
                     print('\nHeads or Tails?')
                     x = input()
                     if x == 'Heads':
-                        Heads = random.randint(1 , 2)
-                        if Heads == 1:
+                        Heads = random.choice(answers)
+                        if Heads == 'Heads':
                             print('\n'+'Heads'+'\n')
                             money = int(money) * 2
-                            print(' You won, you now have €' + str(money)+'.' +'\n')
+                            print('You won, you now have €' + str(money)+'.' +'\n')
                             info = 'show'
-                        elif Heads == 2:
+                        elif Heads == 'Tails':
+                            print('Result: Tails' + '\n')
                             money = 0
                             print('You lost all your money.'+'\n')
                             if amountStocks == 0 :
@@ -110,16 +114,18 @@ while game == True:
                             else:
                                 info = 'show'
                     elif x == 'Tails':
-                        Tails = random.randint(1 , 2)
-                        if Tails == 2:
+                        Tails = random.choice(answers)
+                        if Tails == 'Tails':
                             print('\n'+'Tails'+'\n')
                             money = int(money) * 2
                             print('You won, you now have €' + str(money) + '.' + '\n')
                             info = 'show'
-                        elif Tails == 1 :
+                        elif Tails == 'Heads' :
+                            print('Result : Heads')
                             money = 0
                             print('You lost all your money.'+'\n')
                             if amountStocks == 0 :
+                                print('\nThank you for playing!')
                                 info = 0
                                 game = False
                             else:
